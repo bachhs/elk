@@ -9,7 +9,6 @@ services:
       - elk
     ports:
       - ${ES_PORT}:9200
-    user: $USER
     environment:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - node.name=es01
@@ -29,7 +28,6 @@ services:
       - .data/es02/:/usr/share/elasticsearch/data/
     networks:
       - elk
-    user: $USER
     environment:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - node.name=es02
@@ -49,7 +47,6 @@ services:
       - .data/es03/:/usr/share/elasticsearch/data/
     networks:
       - elk
-    user: $USER
     environment:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - node.name=es03
@@ -74,7 +71,6 @@ services:
     ports:
       - ${LOGSTASH_PORT}:9600
       - 5000:5000
-    user: $USER
     environment:
       - LS_JAVA_OPTS=-Xms512m -Xmx512m
       - ELASTICSEARCH_HOSTS=http://es01:9200
@@ -96,7 +92,6 @@ services:
       - elk
     ports:
       - ${KIBANA_PORT}:5601
-    user: $USER
     environment:
       - SERVERNAME=kibana
       - ELASTICSEARCH_HOSTS=http://es01:9200
