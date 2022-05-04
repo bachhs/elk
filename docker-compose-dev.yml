@@ -57,8 +57,6 @@ services:
   kibana:
     depends_on:
       - es01
-      - es02
-      - es03
     image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
     volumes:
       - ./data/kibana/:/usr/share/kibana/data/
